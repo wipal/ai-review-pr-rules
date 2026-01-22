@@ -1,0 +1,61 @@
+metadata:
+  id: "java-selenium-testng-maven-course-ex2"
+  name: "Exercise 2: Page Object Model"
+  exercise: 2
+  inherits: "../../../course.yaml"
+
+# Exercise-specific requirements
+requirements:
+  description: |
+    Refactor your login test to use Page Object Model pattern.
+    Create a LoginPage class with all locators and actions.
+  must_have:
+    - "LoginPage class in pages package"
+    - "Locators as private final By constants"
+    - "Page methods return Page objects for flow"
+    - "No test logic in page classes"
+  nice_to_have:
+    - "Constructor accepts WebDriver"
+    - "LoadableComponent pattern"
+
+# Override checklist for this exercise
+checklist:
+  - item: "LoginPage class exists"
+    category: "selenium"
+    weight: 20
+  - item: "Locators as By constants"
+    category: "selenium"
+    weight: 15
+  - item: "Methods return Page objects"
+    category: "design"
+    weight: 15
+  - item: "No test logic in page classes"
+    category: "design"
+    weight: 20
+  - item: "Proper waits used"
+    category: "selenium"
+    weight: 10
+  - item: "Tests pass"
+    category: "testng"
+    weight: 20
+
+# Exercise-specific rules (add to course rules)
+additional_rules:
+  - id: "page_class_naming"
+    pattern: "class\\s+\\w+Page"
+    message: "Page classes should follow naming: *Page suffix"
+    severity: "error"
+    category: "selenium"
+  - id: "inline_locator"
+    pattern: "findElement\\(By\\."
+    message: "Use locator constants instead of inline findElement(By)"
+    severity: "warning"
+    category: "selenium"
+
+# Override AI instructions for this exercise
+ai_instructions_override: |
+  Focus heavily on POM pattern evaluation:
+  - Page class separation (30 points)
+  - Locator encapsulation (25 points)
+  - Method return types for flow (25 points)
+  - No test logic in pages (20 points)

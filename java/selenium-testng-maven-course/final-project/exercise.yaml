@@ -1,0 +1,58 @@
+metadata:
+  id: "java-selenium-testng-maven-course-final"
+  name: "Final Project: Complete Test Suite"
+  exercise: 99
+  inherits: "../../../course.yaml"
+
+requirements:
+  description: |
+    Create a complete test suite for an e-commerce login and checkout flow.
+    Apply all best practices learned: POM, waits, TestNG, Maven.
+  must_have:
+    - "Page Object Model for all pages"
+    - "Explicit waits throughout"
+    - "Proper TestNG setup/cleanup"
+    - "Maven dependencyManagement"
+    - "Multiple test cases (success, failure, validation)"
+    - "Tests are isolated and reliable"
+  nice_to_have:
+    - "DataProvider for multiple test data"
+    - "SoftAssert for multiple validations"
+    - "Reporting listeners"
+    - "Parallel execution support"
+
+checklist:
+  - item: "POM pattern followed"
+    category: "selenium"
+    weight: 20
+  - item: "No Thread.sleep()"
+    category: "selenium"
+    weight: 15
+  - item: "Explicit waits used"
+    category: "selenium"
+    weight: 15
+  - item: "TestNG annotations correct"
+    category: "testng"
+    weight: 15
+  - item: "Tests isolated"
+    category: "testng"
+    weight: 15
+  - item: "Maven configured properly"
+    category: "maven"
+    weight: 10
+  - item: "Code quality standards"
+    category: "quality"
+    weight: 10
+
+additional_rules: []
+
+ai_instructions_override: |
+  This is a final project - evaluate comprehensively:
+  - Architecture: POM implementation quality (25 points)
+  - Selenium: Waits, locators, cleanup (25 points)
+  - TestNG: Annotations, isolation, features (20 points)
+  - Maven: Dependency management, build config (15 points)
+  - Code Quality: Naming, structure, documentation (15 points)
+
+  Overall score: 0-100
+  Provide detailed feedback for improvement.

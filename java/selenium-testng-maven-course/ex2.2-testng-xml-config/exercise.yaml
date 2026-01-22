@@ -1,0 +1,123 @@
+metadata:
+  id: "java-selenium-testng-maven-course-ex2.2"
+  name: "Exercise 2.2: TestNG XML Configuration"
+  exercise: 2.2
+  session: 1
+  week: 1
+  duration_hours: 2
+  inherits: "../../../course.yaml"
+
+requirements:
+  description: |
+    Create testng.xml with multiple test suites, selected test classes,
+    specific test methods, and parameter passing. Configure Maven Surefire
+    plugin. Run tests via 'mvn test' and generate HTML reports.
+
+  must_have:
+    - "testng.xml file in src/test/resources"
+    - "Multiple test suites defined"
+    - "Test suites with selected test classes"
+    - "Specific test methods included/excluded"
+    - "Parameter passing via @Parameters annotation"
+    - "Maven Surefire plugin configured in pom.xml"
+    - "Tests run successfully via 'mvn test'"
+    - "HTML test reports generated"
+
+  nice_to_have:
+    - "Parallel execution configured"
+    - "Test groups included/excluded"
+    - "Data-driven tests with @DataProvider"
+    - "Custom listeners for reporting"
+
+checklist:
+  - item: "testng.xml file created"
+    category: "testng"
+    weight: 15
+  - item: "Multiple test suites defined"
+    category: "testng"
+    weight: 15
+  - item: "Test classes selected in XML"
+    category: "testng"
+    weight: 10
+  - item: "Test methods specified"
+    category: "testng"
+    weight: 10
+  - item: "Parameter passing configured"
+    category: "testng"
+    weight: 15
+  - item: "Maven Surefire plugin configured"
+    category: "maven"
+    weight: 15
+  - item: "Tests run via mvn test"
+    category: "maven"
+    weight: 10
+  - item: "HTML reports generated"
+    category: "testng"
+    weight: 10
+
+additional_rules:
+  - id: "testng_xml_exists"
+    pattern: "<suite[^>]*>.*<test[^>]*>.*<classes>"
+    message: "testng.xml must exist with proper structure"
+    severity: "error"
+    category: "testng"
+
+  - id: "surefire_plugin_configured"
+    pattern: "<artifactId>maven-surefire-plugin</artifactId>.*<configuration>"
+    message: "Maven Surefire plugin must be configured"
+    severity: "error"
+    category: "maven"
+
+  - id: "parameters_annotation_used"
+    pattern: "@Parameters\\("
+    message: "@Parameters annotation should be used for XML parameter passing"
+    severity: "warning"
+    category: "testng"
+
+pr_expectations:
+  title_format: "ex2.2: {brief_description}"
+  title_examples:
+    - "ex2.2: TestNG XML configuration with multiple suites"
+    - "Exercise 2.2 - Maven Surefire plugin and testng.xml setup"
+
+  description_template: |
+    ## Summary
+    Created testng.xml configuration with multiple test suites, parameter passing,
+    and Maven Surefire plugin configuration.
+
+    ## What's done
+    - [x] Created testng.xml with proper structure
+    - [x] Defined multiple test suites
+    - [x] Selected specific test classes and methods
+    - [x] Added parameter passing in XML
+    - [x] Configured Maven Surefire plugin
+    - [x] Tests run via 'mvn test'
+    - [x] HTML reports generated
+
+    ## How to test
+    mvn test
+
+  screenshots_required: true
+
+ai_instructions_override: |
+  Review Exercise 2.2 (TestNG XML Configuration):
+  1. testng.xml Structure (30 points) - proper XML, multiple suites, selection
+  2. Parameter Passing (20 points) - parameters in XML, @Parameters annotation
+  3. Maven Integration (25 points) - Surefire plugin, links to testng.xml, reports
+  4. Advanced Features (25 points) - parallel execution, groups, listeners
+
+  Score: 0-100
+
+learning_objectives:
+  - "Create testng.xml configuration file"
+  - "Define multiple test suites"
+  - "Select specific test classes and methods"
+  - "Pass parameters from XML to tests"
+  - "Configure Maven Surefire plugin"
+  - "Run tests via Maven command"
+  - "Generate and view HTML reports"
+
+resources:
+  documentation:
+    - "https://testng.org/doc/documentation-main.html#testng-xml"
+    - "https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html"
