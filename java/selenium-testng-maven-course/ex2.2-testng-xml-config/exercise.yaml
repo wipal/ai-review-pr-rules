@@ -59,18 +59,21 @@ additional_rules:
   - id: "testng_xml_exists"
     pattern: "<suite[^>]*>.*<test[^>]*>.*<classes>"
     message: "testng.xml must exist with proper structure"
+    suggestion: "Create testng.xml in src/test/resources with <suite>, <test>, and <classes> elements"
     severity: "error"
     category: "testng"
 
   - id: "surefire_plugin_configured"
     pattern: "<artifactId>maven-surefire-plugin</artifactId>.*<configuration>"
     message: "Maven Surefire plugin must be configured"
+    suggestion: "Add maven-surefire-plugin configuration in pom.xml to link to testng.xml"
     severity: "error"
     category: "maven"
 
   - id: "parameters_annotation_used"
     pattern: "@Parameters\\("
     message: "@Parameters annotation should be used for XML parameter passing"
+    suggestion: "Use @Parameters({\"paramName\"}) annotation to receive parameters from testng.xml"
     severity: "warning"
     category: "testng"
 

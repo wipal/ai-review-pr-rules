@@ -60,24 +60,28 @@ additional_rules:
   - id: "page_class_exists"
     pattern: "class\\s+\\w+Page"
     message: "Page classes should have 'Page' suffix"
+    suggestion: "Ensure all page classes have 'Page' suffix (e.g., LoginPage, SuccessPage)"
     severity: "error"
     category: "selenium"
 
   - id: "page_package"
     pattern: "package\\s+.*\\.pages"
     message: "Page classes should be in 'pages' package"
+    suggestion: "Move page classes to a 'pages' package for better organization"
     severity: "warning"
     category: "design"
 
   - id: "locator_as_constant"
     pattern: "private\\s+static\\s+final\\s+By\\s+\\w+"
     message: "Locators should be private static final By constants"
+    suggestion: "Define locators as: private static final By BUTTON_SUBMIT = By.id(\"submit\");"
     severity: "error"
     category: "selenium"
 
   - id: "assertion_in_page_class"
     pattern: "(class\\s+\\w+Page.*Assert\\.)|(Assert\\..*class\\s+\\w+Page)"
     message: "Page classes should not contain assertions (test logic)"
+    suggestion: "Move all assertions from page classes to test classes"
     severity: "error"
     category: "design"
 

@@ -44,11 +44,13 @@ additional_rules:
   - id: "page_class_naming"
     pattern: "class\\s+\\w+Page"
     message: "Page classes should follow naming: *Page suffix"
+    suggestion: "Rename your page class to have 'Page' suffix (e.g., LoginPage, HomePage)"
     severity: "error"
     category: "selenium"
   - id: "inline_locator"
     pattern: "findElement\\(By\\."
     message: "Use locator constants instead of inline findElement(By)"
+    suggestion: "Define locators as constants and use them instead of inline findElement(By.id(...))"
     severity: "warning"
     category: "selenium"
 

@@ -59,12 +59,14 @@ additional_rules:
   - id: "element_locators_class_exists"
     pattern: "class\\s+ElementLocators"
     message: "ElementLocators class must be created"
+    suggestion: "Create ElementLocators.java class with locator constants"
     severity: "error"
     category: "selenium"
 
   - id: "absolute_xpath"
     pattern: "By\\.xpath\\(\"/html"
     message: "Avoid absolute XPath - use relative XPath instead"
+    suggestion: "Use relative XPath starting with // instead of absolute paths starting with /html"
     severity: "error"
     category: "selenium"
 

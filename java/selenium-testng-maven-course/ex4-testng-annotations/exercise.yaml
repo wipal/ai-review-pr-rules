@@ -42,5 +42,6 @@ additional_rules:
   - id: "test_without_description"
     pattern: "@Test\\s*(?:public|protected|private)?\\s*\\w+\\("
     message: "@Test should have description attribute"
+    suggestion: "Add description attribute to @Test annotation for better test documentation"
     severity: "warning"
     category: "testng"

@@ -38,5 +38,6 @@ additional_rules:
   - id: "explicit_wait_required"
     pattern: "findElement\\(By\\."
     message: "Use WebDriverWait instead of direct findElement"
+    suggestion: "Wrap findElement with WebDriverWait: new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id(...)))"
     severity: "warning"
     category: "selenium"

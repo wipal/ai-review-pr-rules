@@ -61,24 +61,28 @@ additional_rules:
   - id: "before_method_present"
     pattern: "@BeforeMethod"
     message: "@BeforeMethod should be used for test setup"
+    suggestion: "Add @BeforeMethod annotated method to set up test prerequisites"
     severity: "error"
     category: "testng"
 
   - id: "after_method_present"
     pattern: "@AfterMethod"
     message: "@AfterMethod should be used for test cleanup"
+    suggestion: "Add @AfterMethod annotated method to clean up after each test"
     severity: "error"
     category: "testng"
 
   - id: "test_description_present"
     pattern: "@Test\\s*\\(\\s*description\\s*="
     message: "@Test should have description attribute"
+    suggestion: "Add description to @Test: @Test(description = \"Test for addition operation\")"
     severity: "warning"
     category: "testng"
 
   - id: "softassert_used"
     pattern: "SoftAssert"
     message: "SoftAssert should be used for multiple validations"
+    suggestion: "Use SoftAssert for multiple validations: SoftAssert soft = new SoftAssert(); soft.assertAll();"
     severity: "warning"
     category: "testng"
 

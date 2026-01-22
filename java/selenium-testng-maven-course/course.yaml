@@ -5,6 +5,80 @@ metadata:
   frameworks: ["selenium", "testng", "maven"]
   difficulty: "beginner-to-intermediate"
 
+# ============ REVIEW TEMPLATES ============
+review_templates:
+  summary_header: |
+    # Code Review by Wipal
+    **Config:** `{config_id}`
+    **PR:** [{pr_title}]({pr_url})
+
+  sections:
+    critical:
+      title: "## Critical Issues (Required)"
+      description: "These issues MUST be fixed before approval."
+      empty_message: "**No critical issues!**"
+
+    optimization:
+      title: "## Optimization & Refactoring (Recommended)"
+      description: "Suggested improvements for better code quality."
+      empty_message: "**No optimization suggestions.**"
+
+    style:
+      title: "## Style & Nitpicks (Nice to have)"
+      description: "Minor style suggestions."
+      empty_message: "**No style issues.**"
+
+  conclusion:
+    approved: |
+      ## Approved
+      Great job! Your submission meets all requirements.
+
+      {checklist_summary}
+
+    changes_requested: |
+      ## Changes Requested
+      Please fix the **critical issues** above and update this PR.
+
+      {checklist_summary}
+
+  checklist_summary: |
+    ### Checklist Results
+    {checklist_items}
+
+    **Passed:** {passed_count}/{total_count}
+
+  line_comment: "**{icon}** {message}\n\nTip: {suggestion}"
+
+# ============ APPROVAL CRITERIA ============
+approval_criteria:
+  allow_errors: false
+  max_warnings: 999
+  require_all_checklist: false
+
+# ============ AI SYSTEM ROLE TEMPLATE ============
+ai_system_role_template: |
+  You are an expert code reviewer for {language} projects using {frameworks}.
+
+  Course: {course_name}
+  Exercise: {exercise_name}
+
+  Review focus:
+  1. Critical errors that break functionality
+  2. Code smell and anti-patterns
+  3. Best practices for Selenium WebDriver, TestNG, and Maven
+
+  IMPORTANT: Always include a "suggestion" field with specific guidance on how to fix each issue.
+
+  Respond with JSON:
+  {
+    "scores": {"selenium": 0-50, "testng": 0-30, "maven": 0-20},
+    "issues": [
+      {"file": "...", "line": 42, "severity": "error|warning|info", "message": "...", "suggestion": "..."}
+    ],
+    "approval": true/false,
+    "summary": "..."
+  }
+
 # PR Quality Rules - Apply to ALL submissions
 pr_quality_rules:
   title:
@@ -57,18 +131,21 @@ quick_rules:
   - id: "no_thread_sleep"
     pattern: "Thread\\.sleep\\([^)]*\\)"
     message: "Use WebDriverWait instead of Thread.sleep()"
+    suggestion: "Replace with: new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions...)"
     severity: "error"
     category: "selenium"
 
   - id: "no_println"
     pattern: "System\\.out\\.println"
     message: "Remove debug print statements"
+    suggestion: "Use proper logging framework (SLF4J + Logback) or remove this line"
     severity: "warning"
     category: "code_quality"
 
   - id: "prefer_id_locator"
     pattern: "By\\.(xpath|cssSelector)\\("
     message: "Prefer ID locators over XPath/CSS when possible"
+    suggestion: "Try using By.id() or By.name() for more stable locators"
     severity: "info"
     category: "selenium"
 
@@ -76,12 +153,14 @@ quick_rules:
   - id: "test_description"
     pattern: "@Test\\s*(?!.*description\\s*=)"
     message: "@Test should have description attribute"
+    suggestion: "Add description: @Test(description = \"Verify login functionality\")"
     severity: "info"
     category: "testng"
 
   - id: "no_hard_assert"
     pattern: "Assert\\.(assertEquals|assertTrue)\\("
     message: "Prefer SoftAssert over hard asserts for multiple validations"
+    suggestion: "Use SoftAssert to continue test after assertion failures"
     severity: "info"
     category: "testng"
 
@@ -89,6 +168,7 @@ quick_rules:
   - id: "dependency_version"
     pattern: "<dependency>\\s*<groupId>[^<]+</groupId>\\s*<artifactId>[^<]+</artifactId>\\s*<version>"
     message: "Versions should be in <dependencyManagement> section"
+    suggestion: "Move version to <dependencyManagement> section for better version management"
     severity: "warning"
     category: "maven"
 
@@ -118,7 +198,7 @@ ai_instructions_template: |
   Respond with JSON:
   {
     "scores": {"selenium": 0-50, "testng": 0-30, "maven": 0-20},
-    "issues": [{"file": "...", "line": 42, "severity": "error|warning|info", "message": "..."}],
+    "issues": [{"file": "...", "line": 42, "severity": "error|warning|info", "message": "...", "suggestion": "..."}],
     "approval": true/false,
     "summary": "overall assessment"
   }

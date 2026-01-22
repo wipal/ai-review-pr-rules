@@ -58,12 +58,14 @@ additional_rules:
   - id: "assertion_present"
     pattern: "Assert\\.(assertEquals|assertTrue|assertFalse)\\("
     message: "Test should have assertions to verify results"
+    suggestion: "Add assertion: Assert.assertEquals(actualText, \"Expected Text\", \"Verification message\")"
     severity: "error"
     category: "testng"
 
   - id: "navigate_used"
     pattern: "\\.(get\\(|navigate\\(\\)\\.to\\()"
     message: "Should use get() or navigate().to() for navigation"
+    suggestion: "Use driver.get() or driver.navigate().to() to navigate to the URL"
     severity: "info"
     category: "selenium"
 

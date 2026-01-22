@@ -56,18 +56,21 @@ additional_rules:
   - id: "no_thread_sleep_strict"
     pattern: "Thread\\.sleep\\("
     message: "Thread.sleep() is FORBIDDEN - use WebDriverWait instead"
+    suggestion: "Replace Thread.sleep() with WebDriverWait and ExpectedConditions"
     severity: "error"
     category: "selenium"
 
   - id: "webdriverwait_used"
     pattern: "new WebDriverWait\\("
     message: "WebDriverWait must be used for waiting"
+    suggestion: "Use: new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions...)"
     severity: "error"
     category: "selenium"
 
   - id: "expectedconditions_used"
     pattern: "ExpectedConditions\\.(visibilityOf|presenceOfLocated|invisibilityOf|textToBe)"
     message: "ExpectedConditions should be used for wait conditions"
+    suggestion: "Import and use ExpectedConditions class for wait conditions"
     severity: "error"
     category: "selenium"
 

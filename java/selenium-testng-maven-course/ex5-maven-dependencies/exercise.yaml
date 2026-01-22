@@ -38,5 +38,6 @@ additional_rules:
   - id: "version_in_dependency"
     pattern: "<dependency>\\s*<groupId>org\\.seleniumhq\\.selenium</groupId>\\s*<artifactId>selenium.*?</artifactId>\\s*<version>"
     message: "Move Selenium version to dependencyManagement section"
+    suggestion: "Move version to <dependencyManagement> section and define as a property for centralized version management"
     severity: "error"
     category: "maven"
