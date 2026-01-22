@@ -1,0 +1,112 @@
+metadata:
+  id: "java-selenium-testng-maven-course-ex1.2"
+  name: "Exercise 1.2: Locator Strategies"
+  exercise: 1.2
+  session: 1
+  week: 1
+  duration_hours: 3
+  inherits: "../../../course.yaml"
+
+requirements:
+  description: |
+    Navigate to https://demoqa.com/elements and identify 10 different elements
+    using various locator strategies (ID, Name, CSS Selector, XPath).
+    Create ElementLocators.java class with all locators defined as constants.
+
+  must_have:
+    - "ElementLocators.java class created"
+    - "At least 10 different locators defined"
+    - "Use ID locator for at least 2 elements"
+    - "Use Name locator for at least 1 element"
+    - "Use CSS Selector for at least 3 elements"
+    - "Use XPath for at least 3 elements"
+    - "Locators defined as private static final By constants"
+    - "Test to validate each locator finds correct element"
+
+  nice_to_have:
+    - "Dynamic XPath with contains() function"
+    - "Dynamic XPath with text() function"
+    - "CSS Selector with attribute combinations"
+    - "Comments explaining locator strategy choice"
+
+checklist:
+  - item: "ElementLocators class exists"
+    category: "selenium"
+    weight: 15
+  - item: "10+ locators defined"
+    category: "selenium"
+    weight: 20
+  - item: "ID locators used"
+    category: "selenium"
+    weight: 10
+  - item: "Name locators used"
+    category: "selenium"
+    weight: 5
+  - item: "CSS Selector locators used"
+    category: "selenium"
+    weight: 15
+  - item: "XPath locators used"
+    category: "selenium"
+    weight: 15
+  - item: "Locators as constants"
+    category: "code_quality"
+    weight: 10
+  - item: "Locators validated in tests"
+    category: "testng"
+    weight: 10
+
+additional_rules:
+  - id: "element_locators_class_exists"
+    pattern: "class\\s+ElementLocators"
+    message: "ElementLocators class must be created"
+    severity: "error"
+    category: "selenium"
+
+  - id: "absolute_xpath"
+    pattern: "By\\.xpath\\(\"/html"
+    message: "Avoid absolute XPath - use relative XPath instead"
+    severity: "error"
+    category: "selenium"
+
+pr_expectations:
+  title_format: "ex1.2: {brief_description}"
+  title_examples:
+    - "ex1.2: ElementLocators class with 10+ locator strategies"
+    - "Exercise 1.2 - DemoQA element locators using ID, CSS, XPath"
+
+  description_template: |
+    ## Summary
+    Created ElementLocators class with 10 different locators for DemoQA elements page.
+
+    ## What's done
+    - [x] Created ElementLocators.java class
+    - [x] Defined 10+ element locators
+    - [x] Used ID, Name, CSS, XPath locators
+    - [x] Added dynamic XPath with contains/text functions
+
+    ## How to test
+    mvn test
+
+  screenshots_required: true
+
+ai_instructions_override: |
+  Review Exercise 1.2 (Locator Strategies):
+  1. Locator Variety (30 points) - 10+ locators, mix of ID/Name/CSS/XPath
+  2. Locator Quality (25 points) - prefer ID, relative XPath, optimized CSS
+  3. Code Structure (25 points) - locators as constants, naming, organization
+  4. Best Practices (20 points) - comments, dynamic XPath, avoid brittle locators
+
+  Score: 0-100
+
+learning_objectives:
+  - "ID and Name locators"
+  - "CSS Selectors"
+  - "Relative XPath expressions"
+  - "XPath functions (contains, text, starts-with)"
+  - "Choosing optimal locator strategy"
+
+resources:
+  documentation:
+    - "https://selenium.dev/documentation/webdriver/locators/"
+    - "https://www.w3schools.com/cssref/css_selectors.asp"
+    - "https://devhints.io/xpath"

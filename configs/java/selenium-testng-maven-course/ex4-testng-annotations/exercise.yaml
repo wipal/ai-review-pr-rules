@@ -1,0 +1,46 @@
+metadata:
+  id: "java-selenium-testng-maven-course-ex4"
+  name: "Exercise 4: TestNG Annotations"
+  exercise: 4
+  inherits: "../../../course.yaml"
+
+requirements:
+  description: |
+    Use TestNG annotations properly for test setup, execution, and cleanup.
+    Implement data providers for parameterized tests.
+  must_have:
+    - "@BeforeMethod for setup"
+    - "@AfterMethod for cleanup"
+    - "@Test with description attribute"
+    - "Tests are isolated (no dependencies)"
+  nice_to_have:
+    - "@DataProvider for parameterized tests"
+    - "@Parameters for XML-based parameters"
+    - "Custom listeners for reporting"
+
+checklist:
+  - item: "@BeforeMethod used for setup"
+    category: "testng"
+    weight: 15
+  - item: "@AfterMethod used for cleanup"
+    category: "testng"
+    weight: 15
+  - item: "@Test has description"
+    category: "testng"
+    weight: 15
+  - item: "Tests are isolated"
+    category: "testng"
+    weight: 20
+  - item: "WebDriver properly closed"
+    category: "selenium"
+    weight: 20
+  - item: "Tests pass"
+    category: "testng"
+    weight: 15
+
+additional_rules:
+  - id: "test_without_description"
+    pattern: "@Test\\s*(?:public|protected|private)?\\s*\\w+\\("
+    message: "@Test should have description attribute"
+    severity: "warning"
+    category: "testng"

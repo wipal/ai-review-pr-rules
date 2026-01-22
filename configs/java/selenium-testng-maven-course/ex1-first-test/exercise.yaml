@@ -1,0 +1,45 @@
+metadata:
+  id: "java-selenium-testng-maven-course-ex1"
+  name: "Exercise 1: First Test"
+  exercise: 1
+  inherits: "../../../course.yaml"
+
+# Exercise-specific requirements
+requirements:
+  description: |
+    Create your first Selenium TestNG test that logs into a web application.
+    The test should open a browser, navigate to a login page, enter credentials,
+    and verify successful login.
+  must_have:
+    - "Create a test class with @Test annotation"
+    - "Use WebDriver to open a browser"
+    - "Find and interact with login elements"
+    - "Verify successful login with assertion"
+  nice_to_have:
+    - "Use WebDriverWait for element visibility"
+    - "Add meaningful description to @Test"
+    - "Clean up resources in @AfterMethod"
+
+# Override checklist for this exercise
+checklist:
+  - item: "Test class created with @Test"
+    category: "testng"
+    weight: 20
+  - item: "WebDriver initialized"
+    category: "selenium"
+    weight: 15
+  - item: "Browser navigation works"
+    category: "selenium"
+    weight: 15
+  - item: "Login elements found"
+    category: "selenium"
+    weight: 15
+  - item: "Assertion for login verification"
+    category: "testng"
+    weight: 15
+  - item: "Cleanup in @AfterMethod"
+    category: "testng"
+    weight: 10
+  - item: "No Thread.sleep() used"
+    category: "selenium"
+    weight: 10
